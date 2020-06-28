@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: MyPipeline
+    app: jenkins
+spec:
+  containers:
+  - name: tomcat
+    image: amitbarai/mytomcat
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 8080
+  - name: tomcat
+    image: amitbarai/myjenkins
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 8090
